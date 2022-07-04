@@ -245,7 +245,7 @@ credentials:
           - aws:
               iamRoleArn: "arn:aws:iam::465470186776:role/test"
               id: "random"
-              scope: GLOBAL    
+              scope: GLOBAL
 jenkins:
   agentProtocols:
     - "JNLP4-connect"
@@ -347,8 +347,6 @@ security:
     port: -1
 
 unclassified:
-  aWSLogsConfig:
-    logGroupName: "/jenkins/jobs"
   globallibraries:
     libraries:
       - defaultVersion: master
