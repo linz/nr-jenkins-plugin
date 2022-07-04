@@ -1,1 +1,413 @@
+credentials:
+  system:
+    domainCredentials:
+      - credentials:
+          - basicSSHUserPrivateKey:
+              id: "jenkins-ec2-agent-ssh-key"
+              description: "SSH Key for the Jenkins EC2 instance"
+              scope: SYSTEM
+              username: ec2-user
+              privateKeySource:
+                directEntry:
+                  privateKey: |
+                    ${jenkins-ec2-sshkey}
+          - basicSSHUserPrivateKey:
+              id: "jenkins-kale-ssh-key"
+              description: "SSH Key for access to Kale database host"
+              scope: GLOBAL
+              username: rithomas
+              privateKeySource:
+                directEntry:
+                  privateKey: |
+                    ${jenkins-to-kale-sshkey}
+          - string:
+              id: "jenkins-github-secret"
+              description: "Github secret access token"
+              scope: GLOBAL
+              secret: "${jenkins-github-secret-token}"
+          - string:
+              id: "jenkins-github-webhook-secret"
+              description: "Github Webhook secret key"
+              scope: GLOBAL
+              secret: "${jenkins-github-webhook-secret}"
+          - usernamePassword:
+              id: "github-svc-account"
+              description: "Github service account username/password"
+              scope: GLOBAL
+              username: "${jenkins-github-username}"
+              password: "${jenkins-github-secret-token}"
+          - usernamePassword:
+              id: "artifactory-jenkins-user"
+              description: "Artifactory credentials for Jenkins"
+              scope: GLOBAL
+              username: "${artifactory-user}"
+              password: "${artifactory-password}"
+          - usernamePassword:
+              id: "SvnId"
+              description: "LOL SVN account username/password"
+              scope: GLOBAL
+              username: "${jenkins-svn-username}"
+              password: "${jenkins-svn-password}"
+          - usernamePassword:
+              id: "DatacomSvnId"
+              description: "Datacom SVN account username/password"
+              scope: GLOBAL
+              username: "${jenkins-datacom-svn-username}"
+              password: "${jenkins-datacom-svn-password}"
+          - usernamePassword:
+              id: "STEPSvnId"
+              description: "STEP SVN account username/password"
+              scope: GLOBAL
+              username: "${jenkins-step-svn-username}"
+              password: "${jenkins-step-svn-password}"
+          - usernamePassword:
+              id: "newrelic-insight-insert"
+              description: "STEP New Relic insight insert credentials"
+              scope: GLOBAL
+              username: "2592049"
+              password: "${jenkins-step-newrelic-insight-insert-key}"
+          - aws:
+              iamRoleArn: "arn:aws:iam::395380325371:role/aws-lolsearch-role-pre-jenkins"
+              id: "aws-lolsearch-role-pre-jenkins"
+              scope: GLOBAL
+          - aws:
+              iamRoleArn: "arn:aws:iam::465470186776:role/aws-lolsearch-role-test-jenkins"
+              id: "aws-lolsearch-role-test-jenkins"
+              scope: GLOBAL
+          - aws:
+              iamRoleArn: "arn:aws:iam::227235539331:role/aws-lolsearch-role-prd-jenkins"
+              id: "aws-lolsearch-role-prd-jenkins"
+              scope: GLOBAL
+          - aws:
+              iamRoleArn: "arn:aws:iam::612987644054:role/aws-lolsbx-role-prd-jenkins"
+              id: "aws-lolsbx-role-prd-jenkins"
+              scope: GLOBAL
+          - aws:
+              iamRoleArn: "arn:aws:iam::971422478548:role/aws-lolnotices-role-pre-jenkins"
+              id: "aws-lolnotices-role-pre-jenkins"
+              scope: GLOBAL
+          - aws:
+              iamRoleArn: "arn:aws:iam::971422478548:role/aws-lolnotices-role-chip-jenkins"
+              id: "aws-lolnotices-role-chip-jenkins"
+              scope: GLOBAL
+          - aws:
+              iamRoleArn: "arn:aws:iam::971422478548:role/aws-lolnotices-role-spud-jenkins"
+              id: "aws-lolnotices-role-spud-jenkins"
+              scope: GLOBAL
+          - aws:
+              iamRoleArn: "arn:aws:iam::953632872503:role/aws-notices-prod-role-prd-jenkins"
+              id: "aws-notices-prod-role-prd-jenkins"
+              scope: GLOBAL
+          - aws:
+              iamRoleArn: "arn:aws:iam::110562450435:role/aws-notices-demo-role-test-jenkins"
+              id: "aws-lolnotices-role-demo-jenkins"
+              scope: GLOBAL
+          - aws:
+              iamRoleArn: "arn:aws:iam::110562450435:role/aws-notices-systest-role-test-jenkins"
+              id: "aws-notices-systest-role-test-jenkins"
+              scope: GLOBAL
+          - aws:
+              iamRoleArn: "arn:aws:iam::110562450435:role/aws-notices-dev-role-dev-jenkins"
+              id: "aws-notices-dev-role-dev-jenkins"
+              scope: GLOBAL
+          - aws:
+              iamRoleArn: "arn:aws:iam::110562450435:role/aws-notices-test-role-nonprod-jenkins"
+              id: "aws-notices-test-role-nonprod-jenkins"
+              scope: GLOBAL
+          - aws:
+              iamRoleArn: "arn:aws:iam::101673244273:role/aws-lolsurvey-role-test-jenkins"
+              id: "aws-lolsurvey-role-test-jenkins"
+              scope: GLOBAL
+          - aws:
+              iamRoleArn: "arn:aws:iam::964632537160:role/aws-lolsurvey-role-test-jenkins"
+              id: "aws-lolsurvey-role-test2-jenkins"
+              scope: GLOBAL
+          - aws:
+              iamRoleArn: "arn:aws:iam::330245142449:role/aws-lolsurvey-role-pre-jenkins"
+              id: "aws-lolsurvey-role-pre-jenkins"
+              scope: GLOBAL
+          - aws:
+              iamRoleArn: "arn:aws:iam::700740182805:role/aws-lolsurvey-role-prd-jenkins"
+              id: "aws-lolsurvey-role-prd-jenkins"
+              scope: GLOBAL
+          - aws:
+              iamRoleArn: "arn:aws:iam::115269876098:role/aws-loltitles-role-test-jenkins"
+              id: "aws-loltitles-role-test-jenkins"
+              scope: GLOBAL
+          - aws:
+              iamRoleArn: "arn:aws:iam::511904720100:role/aws-loltitles-role-pre-jenkins"
+              id: "aws-loltitles-role-pre-jenkins"
+              scope: GLOBAL
+          - aws:
+              iamRoleArn: "arn:aws:iam::810246040664:role/aws-loltitles-role-prd-jenkins"
+              id: "aws-loltitles-role-prd-jenkins"
+              scope: GLOBAL
+          - aws:
+              iamRoleArn: "arn:aws:iam::115269876098:role/aws-lol-dealing-role-test-jenkins"
+              id: "aws-lol-dealing-role-test-jenkins"
+              scope: GLOBAL
+          - aws:
+              iamRoleArn: "arn:aws:iam::511904720100:role/aws-lol-dealing-role-pre-jenkins"
+              id: "aws-lol-dealing-role-pre-jenkins"
+              scope: GLOBAL
+          - aws:
+              iamRoleArn: "arn:aws:iam::810246040664:role/aws-lol-dealing-role-prd-jenkins"
+              id: "aws-lol-dealing-role-prd-jenkins"
+              scope: GLOBAL
+          - aws:
+              iamRoleArn: "arn:aws:iam::992960557806:role/aws-lolauth-role-test-jenkins"
+              id: "aws-lolcommon-auth-role-test-jenkins"
+              scope: GLOBAL
+          - aws:
+              iamRoleArn: "arn:aws:iam::992960557806:role/aws-lolauth-role-test-jenkins"
+              id: "aws-lolauth-role-test-jenkins"
+              scope: GLOBAL
+          - aws:
+              iamRoleArn: "arn:aws:iam::992960557806:role/aws-lolauth-role-nonprod-jenkins"
+              id: "aws-lolauth-role-nonprod-jenkins"
+              scope: GLOBAL
+          - aws:
+              iamRoleArn: "arn:aws:iam::286492521837:role/aws-lolauth-role-pre-jenkins"
+              id: "aws-lolauth-role-pre-jenkins"
+              scope: GLOBAL
+          - aws:
+              iamRoleArn: "arn:aws:iam::405285141788:role/aws-lolauth-role-prd-jenkins"
+              id: "aws-lolauth-role-prd-jenkins"
+              scope: GLOBAL
+          - aws:
+              iamRoleArn: "arn:aws:iam::005965230347:role/aws-service-catalogue-role-test-jenkins"
+              id: "aws-service-catalogue-role-test-jenkins"
+              scope: GLOBAL
+          - aws:
+              iamRoleArn: "arn:aws:iam::725496895483:role/aws-service-catalogue-role-prd-jenkins"
+              id: "aws-service-catalogue-role-prd-jenkins"
+              scope: GLOBAL
+          - aws:
+              iamRoleArn: "arn:aws:iam::992960557806:role/aws-lolmanage-role-test-jenkins"
+              id: "aws-lolmanage-role-test-jenkins"
+              scope: GLOBAL
+          - aws:
+              iamRoleArn: "arn:aws:iam::286492521837:role/aws-lolmanage-role-pre-jenkins"
+              id: "aws-lolmanage-role-pre-jenkins"
+              scope: GLOBAL
+          - aws:
+              iamRoleArn: "arn:aws:iam::405285141788:role/aws-lolmanage-role-prd-jenkins"
+              id: "aws-lolmanage-role-prd-jenkins"
+              scope: GLOBAL
+          - aws:
+              iamRoleArn: "arn:aws:iam::405285141788:role/aws-luck-role-prod-jenkins"
+              id: "aws-luck-role-prod-jenkins"
+              scope: GLOBAL
+          - aws:
+              iamRoleArn: "arn:aws:iam::992960557806:role/aws-lolrequest-role-test-jenkins"
+              id: "aws-lolrequest-role-test-jenkins"  # deprecated: use aws-lolrequest-role-nonprod-jenkins
+              scope: GLOBAL
+          - aws:
+              iamRoleArn: "arn:aws:iam::992960557806:role/aws-lolrequest-role-nonprod-jenkins"
+              id: "aws-lolrequest-role-nonprod-jenkins"
+              scope: GLOBAL
+          - aws:
+              iamRoleArn: "arn:aws:iam::286492521837:role/aws-lolrequest-role-pre-jenkins"
+              id: "aws-lolrequest-role-pre-jenkins"
+              scope: GLOBAL
+          - aws:
+              iamRoleArn: "arn:aws:iam::992960557806:role/aws-lolmanage-role-nonprod-jenkins"
+              id: "aws-lolmanage-role-nonprod-jenkins"
+              scope: GLOBAL
+          - aws:
+              iamRoleArn: "arn:aws:iam::992960557806:role/aws-lolworkflow-role-nonprod-jenkins"
+              id: "aws-lolworkflow-role-nonprod-jenkins"
+              scope: GLOBAL
+          - aws:
+              iamRoleArn: "arn:aws:iam::992960557806:role/aws-secure-file-upload-role-nonprod-jenkins"
+              id: "aws-secure-file-upload-role-nonprod-jenkins"
+              scope: GLOBAL
+          - aws:
+              iamRoleArn: "arn:aws:iam::286492521837:role/aws-secure-file-upload-role-preprod-jenkins"
+              id: "aws-secure-file-upload-role-preprod-jenkins"
+              scope: GLOBAL
+          - aws:
+              iamRoleArn: "arn:aws:iam::964632537160:role/aws-internal-survey-app-role-nonprod-jenkins"
+              id: "aws-internal-survey-app-role-nonprod-jenkins"
+              scope: GLOBAL
+          - aws:
+              iamRoleArn: "arn:aws:iam::115269876098:role/aws-internal-titles-app-role-nonprod-jenkins"
+              id: "aws-internal-titles-app-role-nonprod-jenkins"
+              scope: GLOBAL
+          - aws:
+              iamRoleArn: "arn:aws:iam::465470186776:role/pos-jenkins-role-nonprod"
+              id: "aws-internal-pos-app-role-nonprod-jenkins"
+              scope: GLOBAL
+          - aws:
+              iamRoleArn: "arn:aws:iam::465470186776:role/pgs-jenkins-role-nonprod"
+              id: "aws-internal-pgs-app-role-nonprod-jenkins"
+              scope: GLOBAL
+          - aws:
+              iamRoleArn: "arn:aws:iam::465470186776:role/test"
+              id: "test"
+              scope: GLOBAL   
+jenkins:
+  agentProtocols:
+    - "JNLP4-connect"
+    - "Ping"
+  crumbIssuer:
+    standard:
+      excludeClientIPFromCrumb: false
+  systemMessage: >-
+    "This Jenkins is managed by Configuration as Code, update here: https://github.com/linz/step-jenkins/blob/master/jenkins/master/casc_config/config.yml"
+  scmCheckoutRetryCount: 0
+  labelString: "master"
+  mode: EXCLUSIVE
+  quietPeriod: 5
+  numExecutors: 0
+  slaveAgentPort: 50000
+  securityRealm:
+    azure:
+      clientId: "${azure-ad-client-id}"
+      clientSecret: "${azure-ad-client-secret}"
+      tenant: "${azure-ad-tenant-id}"
+  views:
+    - list:
+        columns:
+          - "status"
+          - "weather"
+          - "jobName"
+          - "lastSuccess"
+          - "lastFailure"
+          - "lastDuration"
+          - "buildButton"
+          - "favoriteColumn"
+        name: "Enablement"
+        recurse: true
+        includeRegex: "STEP-(?:Jenkins|Cloudformation|Enablement)+.*master"
+    - list:
+        columns:
+        - "status"
+        - "weather"
+        - "jobName"
+        - "lastSuccess"
+        - "lastFailure"
+        - "lastDuration"
+        includeRegex: ".*master"
+        name: "Master Branches"
+        recurse: true
+    - list:
+        columns:
+          - "status"
+          - "weather"
+          - "jobName"
+          - "lastSuccess"
+          - "lastFailure"
+          - "lastDuration"
+          - "buildButton"
+          - "favoriteColumn"
+        name: "Notices"
+        recurse: true
+        includeRegex: "STEP-Landonline-Notices.*master"
+    - list:
+        columns:
+          - "status"
+          - "weather"
+          - "jobName"
+          - "lastSuccess"
+          - "lastFailure"
+          - "lastDuration"
+          - "buildButton"
+          - "favoriteColumn"
+        name: "Search"
+        recurse: true
+        includeRegex: "STEP-Landonline-Web-Search.*master"
+    - list:
+        columns:
+          - "status"
+          - "weather"
+          - "jobName"
+          - "lastSuccess"
+          - "lastFailure"
+          - "lastDuration"
+          - "buildButton"
+          - "favoriteColumn"
+        name: "Survey"
+        recurse: true
+        includeRegex: "STEP-Landonline-Web-Survey.*master"
+    - all:
+        name: "all"
+  viewsTabBar: "standard"
 
+security:
+  apiToken:
+    creationOfLegacyTokenEnabled: false
+    tokenGenerationOnCreationEnabled: false
+    usageStatisticsEnabled: true
+  queueItemAuthenticator:
+    authenticators:
+      - global:
+          strategy: "systemAuthorizationStrategy"
+  sSHD:
+    port: -1
+
+unclassified:
+  aWSLogsConfig:
+    logGroupName: "/jenkins/jobs"
+  globallibraries:
+    libraries:
+      - defaultVersion: master
+        implicit: false
+        name: step-jenkins-shared-library
+        retriever:
+          modernSCM:
+            scm:
+              git:
+                credentialsId: github-svc-account
+                remote: "https://github.com/linz/step-jenkins-shared-library.git"
+  buildTimestamp:
+    enableBuildTimestamp: true
+    pattern: "dd-MM-yyyy'T'H-mm-ss-SSS"
+    timezone: "NZ"
+  location:
+    adminAddress: "${jenkins-admin-email}"
+    url: "${jenkins-domain-url}"
+  gitHubPluginConfig:
+    configs:
+      - credentialsId: jenkins-github-secret
+        name: "LINZ GitHub"
+    hookUrl: "${jenkins-webhook-url}/github-webhook/"
+    hookSecretConfigs:
+      - credentialsId: jenkins-github-webhook-secret
+  mailer:
+    replyToAddress: "${jenkins-admin-email}"
+  email-ext:
+    adminRequiredForTemplateTesting: false
+    allowUnregisteredEnabled: false
+    charset: "UTF-8"
+    debugMode: false
+    defaultBody: "$PROJECT_NAME - Build # $BUILD_NUMBER - $BUILD_STATUS:\r\n\r\nCheck console output at $BUILD_URL to view the results."
+    defaultContentType: "text/plain"
+    defaultSubject: "$PROJECT_NAME - Build # $BUILD_NUMBER - $BUILD_STATUS!"
+    maxAttachmentSizeMb: 0
+    precedenceBulk: false
+    watchingEnabled: false
+  artifactorybuilder:
+    useCredentialsPlugin: true
+    jfrogInstances:
+      - instanceId: artifactory
+        platformUrl: https://linz.jfrog.io
+        artifactoryUrl: https://linz.jfrog.io/artifactory
+        deployerCredentialsConfig:
+          credentialsId: "artifactory-jenkins-user"
+  timestamper:
+    allPipelines: false
+    elapsedTimeFormat: "'<b>'HH:mm:ss.S'</b> '"
+    systemTimeFormat: "'<b>'HH:mm:ss'</b> '"
+  slackNotifier:
+    botUser: false
+    sendAsText: false
+    room: ""
+  newRelicGlobalConfiguration:
+    insightsInsertCredentialsId: newrelic-insight-insert
+
+tool:
+  git:
+    installations:
+      - home: "git"
+        name: "Default"
