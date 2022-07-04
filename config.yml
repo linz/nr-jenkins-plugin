@@ -244,8 +244,8 @@ credentials:
               scope: GLOBAL
           - aws:
               iamRoleArn: "arn:aws:iam::465470186776:role/test"
-              id: "test"
-              scope: GLOBAL   
+              id: "random"
+              scope: GLOBAL    
 jenkins:
   agentProtocols:
     - "JNLP4-connect"
