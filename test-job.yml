@@ -1,0 +1,71 @@
+jobs:
+  - script: >
+      multibranchPipelineJob('survey-postgres-loader') {
+        description("loads data into postgres using a lambda")
+        branchSources {
+          branchSource {
+            source {
+              github {
+                id('survey-postgres-loader')
+                credentialsId('github-svc-account')
+                repoOwner('linz')
+                repository('survey-postgres-loader')
+                configuredByUrl(true)
+                repositoryUrl('https://github.com/linz/survey-postgres-loader')
+                traits {
+                  cloneOptionTrait {
+                    extension {
+                      shallow(false)
+                      noTags(false)
+                      reference('')
+                      depth(0)
+                      honorRefspec(false)
+                      timeout(10)
+                    }
+                  }
+                  gitHubBranchDiscovery {
+                    strategyId(3)
+                  }
+                  headWildcardFilter {
+                    includes('master main feature/* bugfix/* experimental/* feat/* fix/*')
+                    excludes('')
+                  }
+                  submoduleOptionTrait {
+                    extension {
+                      disableSubmodules(false)
+                      recursiveSubmodules(true)
+                      trackingSubmodules(false)
+                      parentCredentials(true)
+                      reference('')
+                      timeout(10)
+                    }
+                  }
+                  pruneStaleBranchTrait()
+                  wipeWorkspaceTrait()
+                }
+              }
+            }
+            strategy {
+              namedBranchesDifferent {
+                defaultProperties {
+                  suppressAutomaticTriggering()
+                }
+                if (System.getenv('jenkins-domain-url') != 'https://jenkins.nonprod.enablement.awsint.linz.govt.nz') {
+                  namedExceptions {
+                    named {
+                      name('**')
+                      props {}
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+        orphanedItemStrategy {
+          discardOldItems {
+            numToKeep(1)
+            daysToKeep(1)
+          }
+        }
+      }
